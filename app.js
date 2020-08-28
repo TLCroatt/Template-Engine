@@ -47,6 +47,31 @@ function createManager() {
     
 };
 
+function createTeam() {
+    inquirer.prompt([
+        {
+            type: "checkbox",
+            name: "teamMember",
+            message: "What team member do you want to add?",
+            choices: ["Engineer", "Intern", "None"]
+
+        },
+    ]).then(function(answers) {
+        switch(answers.name) {
+            case "Engineer":
+                createEngineer();
+                break;
+        case "Intern":
+            createIntern();
+            break;
+        case "None":
+            buildTeam();
+            default:
+                break;
+        }
+    });
+};
+
 
 
 createManager();
