@@ -10,20 +10,20 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-teamMembers = {}
+var teamMembers = []
 
 function createManager() {
     //prompts to create the manager
     inquirer.prompt([
         {
             type: "input",
-            name: "firstName",
-            message: "What is your first name?",
+            name: "name",
+            message: "What is your name?",
         },
         {
             type: "input",
-            name: "lastName",
-            message: "What is your last name?",
+            name: "id",
+            message: "What is your id number?",
         },
         {
             type: "input",
@@ -36,9 +36,9 @@ function createManager() {
             message: "What is your office number?"
         },
 
-    //.then(function() {store manager data into an object then call creatTeam function})    
+    //.then(function() {store manager data into an object then call createTeam function})    
     ]).then(function(answers) {
-        const manager = new manager(answers.firstName, answers.lastName, answers.email, answers.officeNumber)
+        const manager = new Manager(answers.name, answers.email, answers.officeNumber)
         teamMembers.push(manager);
 
         createTeam();
@@ -49,14 +49,14 @@ function createManager() {
 function createTeam() {
     inquirer.prompt([
         {
-            type: "checkbox",
+            type: "list",
             name: "teamMember",
             message: "What team member do you want to add?",
             choices: ["Engineer", "Intern", "None"]
 
         },
     ]).then(function(answers) {
-        switch(answers.name) {
+        switch(answers.teamMember) {
             case "Engineer":
                 createEngineer();
                 break;
@@ -65,7 +65,7 @@ function createTeam() {
                 break;
             case "None":
                 buildTeam();
-                default:
+            default:
                 break;
         }
     });
@@ -75,13 +75,13 @@ function createEngineer() {
     inquirer.prompt([
         {
             type: "input",
-            name: "firstName",
-            message: "What is the team member's first name?",
+            name: "name",
+            message: "What is the team member's name?",
         },
         {
             type: "input",
-            name: "lastName",
-            message: "What is the team member's last name?",
+            name: "id",
+            message: "What is the team member's id number?",
         },
         {
             type: "input",
@@ -94,7 +94,7 @@ function createEngineer() {
             message: "What is their GitHub username?",
         },
     ]).then(function(answers) {
-        const engineer = new engineer(answers.firstName, answers.lastName, answers.email, answers.gitHub)
+        const engineer = new Engineer(answers.name, answers.email, answers.gitHub)
         teamMembers.push(engineer);
 
         createTeam();
@@ -105,13 +105,13 @@ function createIntern() {
     inquirer.prompt([
         {
             type: "input",
-            name: "firstName",
-            message: "What is the team member's first name?",
+            name: "name",
+            message: "What is the team member's name?",
         },
         {
             type: "input",
-            name: "lastName",
-            message: "What is the team member's last name?",
+            name: "id",
+            message: "What is the team member's id number?",
         },
         {
             type: "input",
@@ -124,14 +124,22 @@ function createIntern() {
             message: "What is their school?",
         },
     ]).then(function(answers) {
-        const intern = new intern(answers.firstName, answers.lastName, answers.email, answers.school)
-        teamMembers.push(school);
-        
+        const intern = new Intern(answers.name, answers.email, answers.school)
+        teamMembers.push(intern);
+
         createTeam();
     });
 };
 
 createManager();
+
+function buildTeam() {
+    const htmlString = render(teamMembers);
+    fs.writeFile(outputPath, htmlString, function(err) {
+        if(err) console.log(err)
+    }) 
+    
+}
 
 
 // Write code to use inquirer to gather information about the development team members,
