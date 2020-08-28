@@ -10,9 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-var manager = [];
-var engineer = [];
-var intern = [];
+teamMembers = {}
 
 function createManager() {
     //prompts to create the manager
@@ -40,7 +38,8 @@ function createManager() {
 
     //.then(function() {store manager data into an object then call creatTeam function})    
     ]).then(function(answers) {
-        answers.push(manager)
+        const manager = new manager(answers.firstName, answers.lastName, answers.email, answers.officeNumber)
+        teamMembers.push(manager);
 
         createTeam();
     });
@@ -61,12 +60,12 @@ function createTeam() {
             case "Engineer":
                 createEngineer();
                 break;
-        case "Intern":
-            createIntern();
-            break;
-        case "None":
-            buildTeam();
-            default:
+            case "Intern":
+                createIntern();
+                break;
+            case "None":
+                buildTeam();
+                default:
                 break;
         }
     });
@@ -95,7 +94,9 @@ function createEngineer() {
             message: "What is their GitHub username?",
         },
     ]).then(function(answers) {
-        answers.push(engineer);
+        const engineer = new engineer(answers.firstName, answers.lastName, answers.email, answers.gitHub)
+        teamMembers.push(engineer);
+
         createTeam();
     });
 };
@@ -123,7 +124,9 @@ function createIntern() {
             message: "What is their school?",
         },
     ]).then(function(answers) {
-        answers.push(intern);
+        const intern = new intern(answers.firstName, answers.lastName, answers.email, answers.school)
+        teamMembers.push(school);
+        
         createTeam();
     });
 };
