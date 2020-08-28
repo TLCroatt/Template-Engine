@@ -6,12 +6,12 @@ An app for managers that runs through Node CLI to generate an HTML file that dis
 ---
 
 ## Table of Contents
-[Installation](#installation)
-[Usage](#usage)
-[License](#license)
-[Contributing](#contributing)
-[Tests](#tests)
-[Questions](#questions)
+-[Installation](#installation)
+-[Usage](#usage)
+-[License](#license)
+-[Contributing](#contributing)
+-[Tests](#tests)
+-[Questions](#questions)
 
 ---
 
@@ -50,9 +50,9 @@ SOFTWARE.
 ---
 
 ## Contributing
-javascript
-jest
-inquirer
-html
+-javascript
+-jest
+-inquirer
+-html
 
 ---
