@@ -100,7 +100,33 @@ function createEngineer() {
     });
 };
 
-
+function createIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "firstName",
+            message: "What is the team member's first name?",
+        },
+        {
+            type: "input",
+            name: "lastName",
+            message: "What is the team member's last name?",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the team member's email address?",
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is their school?",
+        },
+    ]).then(function(answers) {
+        answers.push(intern);
+        createTeam();
+    });
+};
 
 createManager();
 
