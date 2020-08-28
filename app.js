@@ -10,6 +10,43 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+var manager = [];
+var engineer = [];
+var intern = [];
+
+function createManager() {
+    //prompts to create the manager
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "firstName",
+            message: "What is your first name?",
+        },
+        {
+            type: "input",
+            name: "lastName",
+            message: "What is your last name?",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your email address?",
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is your office number?"
+        },
+
+    //.then(function() {store manager data into an object then call creatTeam function})    
+    ]).then(function(answers) {
+        answers.push(manager)
+
+        createTeam();
+    });
+    
+};
+
 
 
 createManager();
