@@ -38,7 +38,7 @@ function createManager() {
 
     //.then(function() {store manager data into an object then call createTeam function})    
     ]).then(function(answers) {
-        const manager = new Manager(answers.name, answers.email, answers.officeNumber)
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         teamMembers.push(manager);
 
         createTeam();
@@ -94,7 +94,7 @@ function createEngineer() {
             message: "What is their GitHub username?",
         },
     ]).then(function(answers) {
-        const engineer = new Engineer(answers.name, answers.email, answers.gitHub)
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub)
         teamMembers.push(engineer);
 
         createTeam();
@@ -124,7 +124,7 @@ function createIntern() {
             message: "What is their school?",
         },
     ]).then(function(answers) {
-        const intern = new Intern(answers.name, answers.email, answers.school)
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
         teamMembers.push(intern);
 
         createTeam();
