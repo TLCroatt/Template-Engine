@@ -3,6 +3,10 @@
 
 An app for managers that runs through Node CLI to generate an HTML file that displays the team.
 
+<img width="1506" alt="TemplateEngine" src="https://user-images.githubusercontent.com/66500773/91663515-8aa8a400-eaa6-11ea-8fa4-f5a69fec55ae.png">
+
+<img width="1413" alt="MyTeam" src="https://user-images.githubusercontent.com/66500773/91663536-b3c93480-eaa6-11ea-9849-53007665eeff.png">
+
 ---
 
 ## Table of Contents
