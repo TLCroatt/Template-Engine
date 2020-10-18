@@ -52,9 +52,9 @@ SOFTWARE.
 ---
 
 ## Contributing
--javascript
--jest
--inquirer
--html
+javascript\
+jest\
+inquirer\
+html
 
 ---
