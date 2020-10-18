@@ -13,7 +13,7 @@ An app for managers that runs through Node CLI to generate an HTML file that dis
 [Installation](#installation)\
 [Usage](#usage)\
 [License](#license)\
-[Contributing](#contributing)\
+[Contributing](#contributing)
 
 ---
 
